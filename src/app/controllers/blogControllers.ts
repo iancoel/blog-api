@@ -106,3 +106,5 @@ class BlogControllers {
     return responses.ok(codes.ok(), messages.ok(), res)
   }
 }
+
+export default BlogControllers
