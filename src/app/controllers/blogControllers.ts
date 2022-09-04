@@ -41,15 +41,15 @@ class BlogControllers {
   createPost = async (req: Request, res: Response) => {
     const {
       title,
-      content,
+      description,
     }: {
       title: string
-      content: string
+      description: string
     } = req.body
 
     const response = await Post.createPost({
       title,
-      content,
+      description,
     })
 
     if (!response) {
@@ -61,7 +61,7 @@ class BlogControllers {
     return responses.success(
       codes.created(),
       messages.created(),
-      { postId, title, content },
+      { postId, title, description },
       res
     )
   }
