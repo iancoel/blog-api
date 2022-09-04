@@ -27,9 +27,9 @@ class BlogControllers {
   }
 
   findPost = async (req: Request, res: Response) => {
-    const { postId } = req.params
+    const { post_id } = req.params
 
-    const response = await Post.findOnePost(parseInt(postId))
+    const response = await Post.findOnePost(parseInt(post_id))
 
     if (!response) {
       return responses.error(codes.error(), messages.notFound(), res)
@@ -75,9 +75,9 @@ class BlogControllers {
       content: string
     } = req.body
 
-    const { postId } = req.params
+    const { post_id } = req.params
 
-    const response = await Post.updatePost(parseInt(postId), {
+    const response = await Post.updatePost(parseInt(post_id), {
       title,
       content,
     })
@@ -89,15 +89,15 @@ class BlogControllers {
     return responses.success(
       codes.ok(),
       messages.ok(),
-      { postId, title, content },
+      { post_id, title, content },
       res
     )
   }
 
   deletePost = async (req: Request, res: Response) => {
-    const { postId } = req.params
+    const { post_id } = req.params
 
-    const response = await Post.deletePost(parseInt(postId))
+    const response = await Post.deletePost(parseInt(post_id))
 
     if (!response) {
       return responses.error(codes.error(), messages.error(), res)

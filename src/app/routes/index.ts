@@ -16,10 +16,10 @@ class Routes {
     })
 
     app.get("/post", Blog.findPosts);
-    app.get("/post/post_id", Blog.findPost);
+    app.get("/post/:post_id", Blog.findPost);
     app.post("/create", Blog.createPost);
-    app.put("/update/post_id", Blog.updatePost);
-    app.delete("/delete/post_id", Blog.deletePost);
+    app.put("/update/:post_id", Blog.updatePost);
+    app.delete("/delete/:post_id", Blog.deletePost);
 
     app.all("*", (req: Request, res: Response) => {
       responses.ok(codes.notFound(), messages.pageNotFound(), res);
